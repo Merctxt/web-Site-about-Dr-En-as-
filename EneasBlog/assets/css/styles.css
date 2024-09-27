@@ -1,0 +1,899 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+
+:root {
+    --primary-color: #0A1128;
+    --white-color: #FFFFFF;
+    --light-gray-color: #EEEEEE;
+    --secondary-color: crimson;
+    --gap: 3rem;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+body.dark-mode {
+    background-color: #1a1919;
+    color: white;
+}
+
+body .full-width {
+    width: 100%;
+    flex: 1 1 100%;
+}
+
+.container {
+    max-width: 168rem;
+    margin: 0 auto;
+    display: flex;
+    flex-grow: 1;
+    padding-top: 6rem; /* Para evitar que o conteúdo fique sob o menu superior */
+    height: 100vh;
+}
+
+/* Menu lateral esquerdo */
+aside.menu-left {
+    width: 22rem;
+    background-color: #444;
+    padding: 2rem;
+    overflow-y: auto;
+    flex-shrink: 0;
+}
+
+.menu-left ul {
+    font-size: 1.5rem;
+}
+
+.menu-left ul li {
+    margin-bottom: 1.5rem;
+}
+
+.menu-left ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.main {
+    list-style-type: disclosure-closed;
+    font-weight: bold;
+    padding: 0;
+}
+
+.secondary {
+    list-style-type: disclosure-open;
+    font-size: 1.2rem;
+    font-style: italic;
+    margin-left: 1.3rem;
+}
+
+.menu-left ul li a:hover {
+    color: var(--primary-color);
+    transition: color 0.1s ease-in-out;
+}
+
+/* Menu superior */
+.menu {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #333;
+    padding: 1.4rem 0;
+    z-index: 1000;
+}
+
+.menu-content {
+    display: grid;
+}
+
+.menu div img {
+    position: fixed;
+    margin-left: 2rem;
+    margin-bottom: -2rem;
+    margin-top: -0.4rem;
+    padding: 0.01rem;
+    border-radius: 10%;
+}
+
+.menu ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    font-size: 1.7rem;
+}
+
+.menu ul li {
+    margin: 0 1.5rem;
+}
+
+
+.menu ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    font-size: 1.8rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.menu ul li a::after {
+    content: '';
+    position: absolute;
+    /*bottom: -0.3rem;
+    left: 100%;
+    width: 0%;
+    height: 0.2rem;
+    background: var(--secondary-color);
+    transition: all 300ms ease-in-out; */
+    width: 0;
+    height: 0.2rem;
+    background-color: var(--white-color);
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease-in-out;
+}
+
+.menu ul li a:hover::after {
+    width: 100%;
+}
+
+/* Definindo a largura da página */
+.main-content {
+    margin: 0 1rem;
+    flex-grow: 1; /* O conteúdo ocupará o espaço restante */
+    overflow-y: auto;
+
+}
+
+/* Estilizando o conteúdo principal */
+main.content section {
+    margin-top: 7rem;
+}
+
+main.content h1, h2 {
+    margin-bottom: 1rem;
+}
+
+main.content p {
+    margin-bottom: 2rem;
+}
+
+.section {
+    min-height: 100vh;
+}
+
+.max-content {
+    background-color: #ada6a68a;
+    max-width: 125rem;
+    margin: 0 auto;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 0.8rem 0;
+    z-index: 1000;
+}
+
+.foter p {
+    font-size: 1.1rem;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+h2 {
+    font-size: 3.5rem;
+}
+
+h3 {
+    font-size: 3rem;
+    font-style: italic;
+}
+
+h4 {
+    font-size: 2.5rem;
+    font-style: oblique;
+}
+
+p {
+    font-size: 1.8rem;
+}
+
+.pagina-1 {
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 0 1rem;
+    min-height: 100vh;
+
+}
+
+.pagina-1 h1 {
+    padding: 1.5rem 3rem;
+    font-size: 4rem;
+}
+
+.pagina-1 h3 {
+    font-size: 3rem;
+    padding-top: 4rem;
+    padding-left: 2rem;
+}
+
+.pagina-1 p {
+    font-size: 1.8rem;
+    padding: 1.5rem 3.5rem;
+}
+
+.pagina-1 div {
+    flex: 1;
+}
+.intro-img img {
+    padding: 2rem;
+    max-width: 100%;
+    height: auto;
+}
+
+.contact-form {
+    grid-column: span 2;
+}
+
+.contact-form {
+    margin: 0 2rem;
+}
+
+.contact-form .form-grid {
+    border: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--gap);
+    padding-bottom: 4rem;
+}
+
+.form-grid legend {
+    font-style: italic;
+    font-size: 1.6rem;
+    padding-left: 2rem;
+    margin-bottom: 3rem;
+}
+
+.form-group {
+    flex: 1 1 320px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.form-group input,
+.form-group textarea {
+    border: none;
+    background: var(--white-color);
+    padding: 1.5rem 2rem;
+    width: 100%;
+    font-size: 3rem;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    box-shadow: 0 0 10px 2px var(--primary-color);
+}
+
+.form-group button {
+    border: 0.5rem solid var(--white-color);
+    background: none;
+    color: var(--white-color);
+    padding: 1.5rem 2rem;
+    font-size: 3rem;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+}
+
+.form-group button:hover {
+    background: var(--white-color);
+    color: var(--primary-color);
+}
+
+.form-group ::placeholder {
+    color: var(--light-gray-color);
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 3.5rem;
+    right: 2rem;
+    background: var(--white-color);
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30%;
+    color: var(--primary-color);
+    transform: rotate(-90deg);
+    border: 0.1rem solid var(--primary-color);
+}
+
+.pagina-2 {
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 0 1rem;
+    min-height: 100vh;
+    
+}
+
+.pagina-2 h1 {
+    padding: 1.5rem;
+    font-size: 4rem;
+}
+
+.pagina-2 h2 {
+    font-size: 3rem;
+    padding-top: 5rem;
+    padding-left: 1.5rem;
+}
+
+.pagina-2 p {
+    font-size: 1.8rem;
+    padding: 1.5rem;
+}
+
+.pagina-2 div {
+    flex: 1;
+}
+.intro-img img {
+    max-width: 100%;
+    height: auto;
+}
+
+.content-img-2 {
+    display: flex;
+    justify-content: space-between; /* Mantém as imagens separadas */
+    align-items: center; /* Alinha verticalmente as imagens na mesma altura */
+}
+
+.left-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.left-image img {
+    max-width: 61.5%; /* Define o tamanho da imagem à esquerda */
+    height: auto; /* Mantém a proporção da imagem */
+    flex-grow: 1;
+}
+
+.right-images {
+    display: flex;
+    flex-direction: column; /* Empilha as imagens verticalmente */
+}
+
+.right-images img {
+    max-width: 65%; /* Define o tamanho das imagens à direita */
+    height: auto; /* Mantém a proporção das imagens */
+    margin: 1rem; /* Adiciona espaço entre as imagens */
+}
+
+.pagina-3 {
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 0 1rem;
+    min-height: 100vh;
+    
+}
+
+.pagina-3 h3 {
+    padding: 1rem;
+    font-size: 4rem;
+}
+
+.pagina-3 h4 {
+    font-size: 3rem;
+    padding-top: 1rem;
+    padding-left: 2rem;
+    padding-bottom: 2rem;
+}
+
+.pagina-3 p {
+    font-size: 1.8rem;
+    padding-left: 2rem;
+    padding-right: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+.pagina-3 div {
+    flex: 1;
+}
+
+.pagina-4 {
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 0 1rem;
+    min-height: 100vh;
+    
+}
+
+.pagina-4 h3 {
+    padding: 1rem;
+    font-size: 4rem;
+}
+
+.pagina-4 h4 {
+    font-size: 3rem;
+    padding-top: 1rem;
+    padding-left: 2rem;
+    padding-bottom: 2rem;
+}
+
+.pagina-4 p {
+    font-size: 1.8rem;
+    padding-left: 2rem;
+    padding-right: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+.pagina-4 div {
+    flex: 1;
+}
+
+.youtube-playlist {
+    max-width: 90%;
+    margin: 2rem;
+    text-align: center;
+}
+
+
+
+.youtube-playlist iframe {
+    width: 90%;
+    height: 100%;
+}
+
+.pagina-5 {
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 0 1rem;
+    min-height: 100vh;
+    
+}
+
+.pagina-5 h3 {
+    padding: 1rem;
+    font-size: 4rem;
+}
+
+.pagina-5 h4 {
+    font-size: 3rem;
+    padding-top: 1rem;
+    padding-left: 2rem;
+    padding-bottom: 2rem;
+}
+
+.pagina-5 p {
+    font-size: 1.8rem;
+    padding-left: 2rem;
+    padding-right: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+.pagina-5 div {
+    flex: 1;
+}
+
+.pagina-5 .intro-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagina-5 .intro-img img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.pagina-6 {
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 0 1rem;
+    min-height: 100vh;
+    
+}
+
+.pagina-6 h3 {
+    padding-top: 3rem;
+    padding-left: 1rem;
+    padding-bottom: 1.7rem;
+    font-size: 4rem;
+}
+
+.pagina-6 h4 {
+    font-size: 3rem;
+    padding-top: 1.7rem;
+    padding-left: 2rem;
+    padding-bottom: 2rem;
+}
+
+.pagina-6 p {
+    font-size: 1.8rem;
+    padding-left: 2rem;
+    padding-right: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+.pagina-6 div {
+    flex: 1;
+}
+
+.pagina-8 {
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 0 1rem;
+    min-height: 100vh;
+    
+}
+
+.pagina-8 h3 {
+    font-size: 4rem;
+    padding-top: 3rem;
+    padding-left: 2rem;
+    padding-bottom: 2rem;
+}
+
+.pagina-8 p {
+    font-size: 1.8rem;
+    padding-left: 2rem;
+    padding-right: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+.pagina-8 div {
+    flex: 1;
+}
+
+.container-8 {
+    width: 100%;
+    padding: 2rem;
+}
+
+.image-corner {
+    float: right;
+    margin-right: 2rem;
+    width: 14rem;
+    height: auto;
+}
+
+.playlist1 {
+    padding-top: 3rem;
+    padding-left: 3rem;
+}
+
+.playlist1 a {
+    text-decoration:none;
+    color: rgb(30, 30, 212);
+}
+
+.playlist1 a:hover {
+    text-decoration: underline;
+    color: rgb(58, 58, 212);
+}
+
+.grid-one-content {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.grid-main-heading {
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+}
+
+.grid-description {
+    padding-bottom: 1;
+}
+
+.grid {
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--gap);
+    counter-reset: grid-counter;
+}
+
+.grid h3 {
+    font-size: 3rem;
+    position: relative;
+    padding-left: 5rem;
+    padding-bottom: 2rem;
+}
+.grid h3::before {
+    counter-increment: grid-counter;
+    content: counter(grid-counter);
+    position: absolute;
+    font-size: 8rem;
+    font-style: italic;
+    top: -4rem;
+    left: -2rem;
+    transform: rotate(5deg);
+}
+.gallery-img {
+    width: 100%;
+    height: auto;
+    max-width: 35rem;
+    max-height: 35rem;
+    overflow: hidden;
+}
+.gallery-img img {
+    transition: all 300ms ease-in-out;
+}
+.gallery-img img:hover {
+    transform: translate(-3%, 3%) scale(1.2) rotate(5deg);
+}
+.grid-one-content h3 {
+        padding: 1 2rem;
+        font-size: 4rem;
+}
+
+.grid-one-content p {
+    display: grid;
+    font-size: 2.5rem;
+    padding-left: 2rem;
+    padding-right: 1.5rem;
+    padding-bottom: 3rem;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.pagina-9 h3 {
+    padding-left: 3rem;
+    padding-top: 5rem;
+    padding-bottom: 1rem;
+    font-size: 4rem;
+}
+
+.pagina-9 h4 {
+    font-size: 3rem;
+    padding-top: 1rem;
+    padding-left: 2rem;
+    padding-bottom: 2rem;
+}
+
+.pagina-9 p {
+    font-size: 1.8rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 1rem;
+}
+
+#toggle-theme {
+    font-size: 1.2rem;
+    padding: 1rem 20px;
+    cursor: pointer;
+    background-color: #ede8e8;
+    color: #181818;
+    border: none;
+    border-radius: 5px;
+    position: fixed;
+    right: 20px;
+    top: 1rem;
+}
+
+#toggle-theme:hover {
+    background-color: #555;
+}
+
+.close-menu {
+    display: none;
+}
+
+.toggle-menu {
+    display: none;
+}
+
+
+@media (max-width: 800px) {
+
+    .container {
+        padding-top: 1rem;
+    }
+
+    .pagina-1 h1 {
+        padding-top: 4rem;
+    }
+
+    .menu-left ul {
+        padding-top: 2rem;
+    }
+
+    .intro-content, .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-img {
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+    .grid-one-content {
+        display: block;
+    }
+
+    .menu {
+        bottom: 0;
+        text-align: center;
+    }   
+
+    .menu-content, .menu-content ul {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .menu-content {
+        height: 100vh;
+    }
+
+    .menu {
+        display: none;
+    }
+
+
+    .close-menu-label::after {
+        content: '☰';
+        position: fixed;
+        z-index: 2000;
+        top: 1rem;
+        right: 2rem;
+        background: var(--primary-color);
+        color: var(--white-color);
+        font-size: 2.5rem;
+        line-height: 3rem;
+        width: 3rem;
+        height: 3rem;
+        text-align: center;
+        padding: 0.5rem;
+        cursor: pointer;
+    }
+
+    .close-menu:checked~.menu {
+        display: block;
+    }
+
+    .close-menu:checked~.close-menu-label::after {
+        content: 'x';
+    }
+
+    #toggle-theme {
+        font-size: 1.2rem;
+        padding: 1rem 20px;
+        cursor: pointer;
+        background-color: #ede8e8;
+        color: #181818;
+        border: none;
+        border-radius: 5px;
+        position: fixed;
+        right: 10rem;
+        top: 1.3rem;
+    }
+
+    .menu .div-prona {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .menu div .logo-prona {
+        margin: 0;
+        display: flex;
+        width: 10rem;
+        height: 10rem;
+        position: fixed;
+        border-radius: 10%;
+    }
+
+    .menu-left {
+        display: none;
+    }
+
+    .toggle-menu-label::after {
+        content: '☰⁝';
+        position: fixed;
+        z-index: 2000;
+        top: 1rem;
+        left: 1rem;
+        background: var(--primary-color);
+        color: var(--white-color);
+        font-size: 2.5rem;
+        line-height: 3rem;
+        width: 3rem;
+        height: 3rem;
+        text-align: center;
+        padding: 0.5rem;
+        cursor: pointer;
+    }
+    
+    /* Menu aberto */
+    .toggle-menu:checked ~ aside.menu-left {
+        display: flex;
+        position: fixed;
+        left: 0; /* Desliza o menu para a metade da tela */
+        height: 100%;
+    }
+    
+    /* Alterar ícone ao abrir o menu */
+    .toggle-menu:checked ~ .toggle-menu-label::after {
+        content: 'x';
+    }
+}
+
+@media (max-width: 570px) {
+    .content-img-2 {
+        grid-template-columns: 1fr;
+        flex-direction: column;
+    }
+
+    .content-img-2 img {
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+    .content-img-2 img {
+        display: block;
+    }
+
+    .pagina-1 h1, .pagina-1 h2, .pagina-1 h3, .pagina-1 h4, .pagina-1 p,
+    .pagina-2 h1, .pagina-2 h2, .pagina-2 h3, .pagina-2 h4, .pagina-2 p,
+    .pagina-3 h1, .pagina-3 h2, .pagina-3 h3, .pagina-3 h4, .pagina-3 p,
+    .pagina-4 h1, .pagina-4 h2, .pagina-4 h3, .pagina-4 h4, .pagina-4 p,
+    .pagina-5 h1, .pagina-5 h2, .pagina-5 h3, .pagina-5 h4, .pagina-5 p,
+    .pagina-6 h1, .pagina-6 h2, .pagina-6 h3, .pagina-6 h4, .pagina-6 p,
+    .pagina-8 h1, .pagina-8 h2, .pagina-8 h3, .pagina-8 h4, .pagina-8 p,
+    .pagina-9 h1, .pagina-9 h2, .pagina-9 h3, .pagina-9 h4, .pagina-9 p {
+        padding-left: 0rem;
+        padding-right: 0rem;
+    }
+
+    .pagina-8 {
+        padding-left: 0.5rem;
+    }
+}
+
+@media (min-width: 801px) and (max-width: 1100px) {
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .gallery-img {
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+}
