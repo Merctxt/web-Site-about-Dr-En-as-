@@ -7,17 +7,6 @@ além de divulgar seus pensamentos e projetos.
 O site está hospedado no Netlify e pode ser acessado através da URL:
 
 [https://eneasblog.netlify.app/](https://eneasblog.netlify.app/)
-
-## 🚀 Como Usar
-
-Este é um site estático simples, sem necessidade de configuração de back-end. Para visualizar o conteúdo você pode acessá-lo pelo [link](https://eneasblog.netlify.app/) ou baixa-lo localmente, basta seguir os passos abaixo:
-
-   
-    Clone o repositório para sua máquina local:
-
-    git clone https://github.com/Merctxt/web-Site-about-Dr-En-as-.git
-    cd web-Site-about-Dr-En-as-
-
 <br>
 
 ## 📝 Licença
