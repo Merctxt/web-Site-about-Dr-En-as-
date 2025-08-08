@@ -1,0 +1,81 @@
+# Configuração Netlify para o site Dr. Enéas
+[build]
+  publish = "."
+  command = "echo 'Site estático pronto para publicação'"
+
+# Headers para performance e segurança
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "*.jpeg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+# Redirects para compatibilidade
+[[redirects]]
+  from = "/home"
+  to = "/#home"
+  status = 301
+
+[[redirects]]
+  from = "/biografia"
+  to = "/#biografia"
+  status = 301
+
+[[redirects]]
+  from = "/carreira"
+  to = "/#carreira"
+  status = 301
+
+[[redirects]]
+  from = "/discursos"
+  to = "/#discursos"
+  status = 301
+
+[[redirects]]
+  from = "/medicina"
+  to = "/#medicina"
+  status = 301
+
+[[redirects]]
+  from = "/contato"
+  to = "/#contato"
+  status = 301
+
+# Fallback para SPA
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
